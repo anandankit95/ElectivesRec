@@ -1,14 +1,17 @@
 from flask import Flask,render_template,request,session,redirect, url_for
 import pymongo
 from pymongo import MongoClient
-
 import os
 import socket
 
 
+# Get username & password to get acces to database (Replace with your file)
+filename='/home/ashik/cred.txt'
+temp=open(filename,'r').read().split('\n')
+
 #define flask app
 app=Flask(__name__)
-client=MongoClient("mongodb://Ash:kneelbeforeme@localhost:27017/ERecDB")
+client=MongoClient("mongodb://"+temp[0]+":"+temp[1]+"@localhost:27017/ERecDB")
 db=client["ERecDB"]
 
 @app.route('/index')
@@ -21,7 +24,6 @@ def login():
 	if request.method == 'POST':
 		auc=db["authentication"]
 		user=auc.find_one({"username":request.form['username']})
-		print(user)
 		if(user!=None) :
 			if(request.form['password']==user["passwd"]):
 				return(redirect(url_for('index')))
