@@ -1,0 +1,33 @@
+# Project title  -- WEB TECH 2
+
+1. Elective recommendation
+2. Answer Evaluation
+3. Question Generation - Generate a Passage
+4. Domain Areas- Biology - given image identify diesese pattern
+5. Maths Website - To draw figures
+
+# Not more than 5-6 pages - Demonstrate Ajax, -- No language Constraints
+
+Groups 1-32 -- algebra 1. enter equation --> evaluate that --Answer recommendation
+Groups 33-64 -- Elective Recommmendation - Inputs 
+	1. previous GPA 
+	2. key skills 
+	3. Related course performance 
+	-- Dataset-- Take from Department  
+
+
+# PAGES TO BE DONE
+1. Login/Register
+2. User’s Data — Take input — display previous recommendations	
+3. Feedback Page
+4. Recommendation Page- different electives - separate by graphs and show to the user
+5. 
+
+
+Database tables :
+1) Authentication - User name and password
+2)Student data input(form)
+3)Data set 
+4)recommended data (electives output)
+5)data of the elective chosen by student
+ 
