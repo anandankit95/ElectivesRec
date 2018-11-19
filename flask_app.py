@@ -27,6 +27,8 @@ def index():
 def register():
 	return render_template('register.html')
 
+	
+
 @app.route('/login',methods=['GET', 'POST'])
 def login():
 	error = None
@@ -40,7 +42,12 @@ def login():
 				error = "Invalid password"
 		else:
 			error = "Invalid username"		
-	return(render_template('login.html',error=error))
+	return(render_template('loginForm.html',error=error))
+
+
+@app.route('/elective',methods=['GET','POST'])
+def elective():
+	return render_template('electiveForm.html')	
 
 if __name__ == '__main__':
 	app.config['DEBUG'] = True #helps you to see changes without re-running app
