@@ -15,16 +15,16 @@ client=MongoClient("mongodb://"+temp[0]+":"+temp[1]+"@localhost:27017/ERecDB")
 db=client["ERecDB"]
 
 
-'''
+
 @app.route('/index')
 def index():
     return render_template('index.html')
-  '''  
-@app.route('/register')
+
+@app.route('/')
 def register():
 	return render_template('register.html')
-
-@app.route('/',methods=['GET', 'POST'])
+	
+@app.route('/login',methods=['GET','POST'])
 def login():
 	error = None
 	if request.method == 'POST':
@@ -32,12 +32,16 @@ def login():
 		user=auc.find_one({"username":request.form['username']})
 		if(user!=None) :
 			if(request.form['password']==user["passwd"]):
-				return(redirect(url_for('index')))
+				return(redirect(url_for('electiveForm')))
 			else:
 				error = "Invalid password"
 		else:
-			error = "Invalid username"		
+			error = "Invalid username"					
 	return(render_template('login.html',error=error))
+
+@app.route('/elective',methods=['GET','POST'])
+def elective():
+	return render_template('electiveForm.html')	
 
 if __name__ == '__main__':
 	app.config['DEBUG'] = True #helps you to see changes without re-running app
