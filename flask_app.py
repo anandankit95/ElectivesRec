@@ -6,30 +6,25 @@ import socket
 
 
 # Get username & password to get acces to database (Replace with your file)
-#filename='/home/ashik/cred.txt'
-#temp=open(filename,'r').read().split('\n')
+filename='/home/ashik/cred.txt'
+temp=open(filename,'r').read().split('\n')
 
 #define flask app
 app=Flask(__name__)
-client=MongoClient("mongodb://localhost:27017")
+client=MongoClient("mongodb://"+temp[0]+":"+temp[1]+"@localhost:27017/ERecDB")
 db=client["ERecDB"]
 
-@app.route('/')
-@app.route('/home')
-def home():
-	return "Welcome"
-'''
+
+
 @app.route('/index')
 def index():
     return render_template('index.html')
-  '''  
-@app.route('/register')
+
+@app.route('/')
 def register():
 	return render_template('register.html')
-
 	
-
-@app.route('/login',methods=['GET', 'POST'])
+@app.route('/login',methods=['GET','POST'])
 def login():
 	error = None
 	if request.method == 'POST':
@@ -37,13 +32,12 @@ def login():
 		user=auc.find_one({"username":request.form['username']})
 		if(user!=None) :
 			if(request.form['password']==user["passwd"]):
-				return(redirect(url_for('index')))
+				return(redirect(url_for('electiveForm')))
 			else:
 				error = "Invalid password"
 		else:
-			error = "Invalid username"		
-	return(render_template('loginForm.html',error=error))
-
+			error = "Invalid username"					
+	return(render_template('login.html',error=error))
 
 @app.route('/elective',methods=['GET','POST'])
 def elective():
