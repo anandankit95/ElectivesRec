@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Elective Recommendation Form</title>
+
+        <!-- CSS -->
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:400,700">
+        <link rel="stylesheet" href="{{url_for('static',filename='assets/bootstrap/css/bootstrap.min.css')}}">
+        <link rel="stylesheet" href="{{url_for('static',filename='assets/font-awesome/css/font-awesome.min.css')}}">
+		<link rel="stylesheet" href="{{url_for('static',filename='assets/css/form-elements.css')}}">
+        <link rel="stylesheet" href="{{url_for('static',filename='assets/css/style.css')}}">
+        <link rel="stylesheet" href="{{url_for('static',filename='assets/css/media-queries.css')}}">
+
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+        <!-- Favicon and touch icons -->
+        <link rel="shortcut icon" href="assets/ico/favicon.png">
+        <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{url_for('static',filename='assets/ico/apple-touch-icon-144-precomposed.png')}}">
+        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="{{url_for('static',filename='assets/ico/apple-touch-icon-114-precomposed.png')}}">
+        <link rel="apple-touch-icon-precomposed" sizes="72x72" 	href="{{url_for('static',filename='assets/ico/apple-touch-icon-72-precomposed.png')}}">
+        <link rel="apple-touch-icon-precomposed" href="{{url_for('static',filename='assets/ico/apple-touch-icon-57-precomposed.png')}}">
+
+    </head>
+
+    <body>
+		
+		<!-- Top menu -->
+		
+        
+       <!-- Description -->
+		<div class="description-container">
+	        <div class="container">
+	        	<div class="row">
+	                <div class="col-sm-12 description-title">
+	                    <h2>Elective Recommendation</h2>
+	                </div>
+	            </div>
+	            <div class="row">
+	                <div class="col-sm-12 description-text">
+	                    <p>
+	                    	Get Amazing Elective recommendation by filling this simple form
+	                    </p>
+	                    <div class="divider-1">. . . . . . . . . . . . . . . .</div>
+	                </div>
+	            </div>
+			</div>
+		</div>
+		
+		<!-- Multi Step Form -->
+		<div class="msf-container">
+	        <div class="container">
+	        	<div class="row">
+	                <div class="col-sm-12 msf-title">
+	                    <h3>Fill In The Form</h3>
+	                    <p>Please complete the form below to get instant access to our elective recommendations:</p>
+	                </div>
+	            </div>
+	            <div class="row">
+	                <div class="col-sm-12 msf-form">
+	                    
+	                    <form role="form" action="" method="post" class="form-inline">
+	                    	
+	                    	<fieldset>
+	            				<h4>Introduction <span class="step">(Step 1 / 5)</span></h4>
+	            				<div class="form-group">
+				                    <label for="first-name">First Name:</label><br>
+				                    <input type="text" name="first-name" class="first-name form-control" id="first-name">
+				                </div>
+				                <div class="form-group">
+				                    <label for="last-name">Last Name:</label><br>
+				                    <input type="text" name="last-name" class="last-name form-control" id="last-name">
+				                </div>
+				                <div class="form-group">
+				                    <label for="username">Username:</label><br>
+				                    <input type="text" name="username" class="height form-control" id="username">
+				                </div>
+				               
+	            				<br>
+	            				<button type="button" class="btn btn-next">Next <i class="fa fa-angle-right"></i></button>
+	            			</fieldset>
+	            			
+	            			<fieldset>
+	            				<h4>Semester 1 Details: <span class="step">(Step 2 / 5)</span></h4>
+	            				<div class="form-group">
+				                    <label for="subject1">Subject 1:</label><br>
+				                    <input type="text" name="subject1" class="birth-city form-control" id="sem1_subject1">
+				                </div>
+				                <div class="form-group">
+				                    <label for="subject2">Subject 2:</label><br>
+				                    <input type="text" name="subject2" class="birth-city form-control" id="sem1_subject2">
+				                </div>
+				                <div class="form-group">
+				                    <label for="subject3">Subject 3:</label><br>
+				                    <input type="text" name="subject3" class="birth-city form-control" id="sem1_subject3">
+				                </div>
+				                <div class="form-group">
+				                    <label for="subject4">Subject 4:</label><br>
+				                    <input type="text" name="subject4" class="birth-city form-control" id="sem1_subject4">
+				                </div>
+				                <div class="form-group">
+				                    <label for="subject5">Subject 5:</label><br>
+				                    <input type="text" name="subject5" class="birth-city form-control" id="sem1_subject5">
+				                </div>
+
+				                <br>
+	            				<button type="button" class="btn btn-previous"><i class="fa fa-angle-left"></i> Previous</button>
+	            				<button type="button" class="btn btn-next">Next <i class="fa fa-angle-right"></i></button>
+	            			</fieldset>
+
+	            			<fieldset>
+	            				<h4>Semester 2 Details: <span class="step">(Step 3 / 5)</span></h4>
+	            				<div class="form-group">
+				                    <label for="subject1">Subject 1:</label><br>
+				                    <input type="text" name="subject1" class="birth-city form-control" id="sem2_subject1">
+				                </div>
+				                <div class="form-group">
+				                    <label for="subject2">Subject 2:</label><br>
+				                    <input type="text" name="subject2" class="birth-city form-control" id="sem2_subject2">
+				                </div>
+				                <div class="form-group">
+				                    <label for="subject3">Subject 3:</label><br>
+				                    <input type="text" name="subject3" class="birth-city form-control" id="sem2_subject3">
+				                </div>
+				                <div class="form-group">
+				                    <label for="subject4">Subject 4:</label><br>
+				                    <input type="text" name="subject4" class="birth-city form-control" id="sem2_subject4">
+				                </div>
+				                <div class="form-group">
+				                    <label for="subject5">Subject 5:</label><br>
+				                    <input type="text" name="subject5" class="birth-city form-control" id="sem2_subject5">
+				                </div>
+
+				                <br>
+	            				<button type="button" class="btn btn-previous"><i class="fa fa-angle-left"></i> Previous</button>
+	            				<button type="button" class="btn btn-next">Next <i class="fa fa-angle-right"></i></button>
+	            			</fieldset>
+
+	            			<fieldset>
+	            				<h4>Semester 3 Details: <span class="step">(Step 4 / 5)</span></h4>
+	            				<div class="form-group">
+				                    <label for="subject1">Subject 1:</label><br>
+				                    <input type="text" name="subject1" class="birth-city form-control" id="sem3_subject1">
+				                </div>
+				                <div class="form-group">
+				                    <label for="subject2">Subject 2:</label><br>
+				                    <input type="text" name="subject2" class="birth-city form-control" id="sem3_subject2">
+				                </div>
+				                <div class="form-group">
+				                    <label for="subject3">Subject 3:</label><br>
+				                    <input type="text" name="subject3" class="birth-city form-control" id="sem3_subject3">
+				                </div>
+				                <div class="form-group">
+				                    <label for="subject4">Subject 4:</label><br>
+				                    <input type="text" name="subject4" class="birth-city form-control" id="sem3_subject4">
+				                </div>
+				                <div class="form-group">
+				                    <label for="subject5">Subject 5:</label><br>
+				                    <input type="text" name="subject5" class="birth-city form-control" id="sem3_subject5">
+				                </div>
+
+				                <br>
+	            				<button type="button" class="btn btn-previous"><i class="fa fa-angle-left"></i> Previous</button>
+	            				<button type="button" class="btn btn-next">Next <i class="fa fa-angle-right"></i></button>
+	            			</fieldset>
+
+	            			<fieldset>
+	            				<h4>Semester 4 Details: <span class="step">(Step 5 / 5)</span></h4>
+	            				<div class="form-group">
+				                    <label for="subject1">Subject 1:</label><br>
+				                    <input type="text" name="subject1" class="birth-city form-control" id="sem4_subject1">
+				                </div>
+				                <div class="form-group">
+				                    <label for="subject2">Subject 2:</label><br>
+				                    <input type="text" name="subject2" class="birth-city form-control" id="sem4_subject2">
+				                </div>
+				                <div class="form-group">
+				                    <label for="subject3">Subject 3:</label><br>
+				                    <input type="text" name="subject3" class="birth-city form-control" id="sem4_subject3">
+				                </div>
+				                <div class="form-group">
+				                    <label for="subject4">Subject 4:</label><br>
+				                    <input type="text" name="subject4" class="birth-city form-control" id="sem4_subject4">
+				                </div>
+				                <div class="form-group">
+				                    <label for="subject5">Subject 5:</label><br>
+				                    <input type="text" name="subject5" class="birth-city form-control" id="sem4_subject5">
+				                </div>
+
+				                <br>
+	            				<button type="button" class="btn btn-previous"><i class="fa fa-angle-left"></i> Previous</button>
+	            				<button type="submit" class="btn">Submit</button>
+	            			</fieldset>
+
+	            			
+	                    </form>
+	                    
+	                </div>
+	            </div>
+			</div>
+		</div>
+		
+		
+
+        <!-- Javascript -->
+        <script src="{{url_for('static',filename='assets/js/jquery-1.11.1.min.js')}}"></script>
+        <script src="{{url_for('static',filename='assets/bootstrap/js/bootstrap.min.js')}}"></script>
+        <script src="{{url_for('static',filename='assets/js/jquery.backstretch.min.js')}}"></script>
+        <script src="{{url_for('static',filename='assets/js/scripts.js')}}"></script>
+        
+
+
+    </body>
+
+</html>

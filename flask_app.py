@@ -12,6 +12,7 @@ temp=open(filename,'r').read().split('\n')
 #define flask app
 app=Flask(__name__)
 client=MongoClient("mongodb://"+temp[0]+":"+temp[1]+"@localhost:27017/ERecDB")
+#client=MongoClient("mongodb://localhost:27017")
 db=client["ERecDB"]
 
 
@@ -41,7 +42,7 @@ def login():
 
 @app.route('/elective',methods=['GET','POST'])
 def elective():
-	return render_template('electiveForm.html')	
+	return render_template('elecFormProgressive.html')	
 
 if __name__ == '__main__':
 	app.config['DEBUG'] = True #helps you to see changes without re-running app
