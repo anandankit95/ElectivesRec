@@ -43,6 +43,7 @@ def login():
 @app.route('/elective',methods=['GET','POST'])
 def elective():
 	return render_template('elecFormProgressive.html')	
+	
 
 if __name__ == '__main__':
 	app.config['DEBUG'] = True #helps you to see changes without re-running app
