@@ -5,7 +5,7 @@ from sklearn import preprocessing
 from sklearn.model_selection import cross_val_score
 from sklearn.metrics import accuracy_score
 
-df=pd.read_csv("/home/ashik/Desktop/erec_data.csv")
+df=pd.read_csv("/Users/ankit/Desktop/Sem 7/Web Tech 2/WT2 Project/ElectivesRec/erec_data.csv")
 X=df.iloc[:,:-1].values
 
 le = preprocessing.LabelEncoder()

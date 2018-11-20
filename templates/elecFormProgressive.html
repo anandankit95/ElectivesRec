@@ -30,6 +30,17 @@
         <link rel="apple-touch-icon-precomposed" sizes="72x72" 	href="{{url_for('static',filename='assets/ico/apple-touch-icon-72-precomposed.png')}}">
         <link rel="apple-touch-icon-precomposed" href="{{url_for('static',filename='assets/ico/apple-touch-icon-57-precomposed.png')}}">
 
+    
+    <script type="text/javascript">
+    	
+    	var obj={
+    			xhr:new XMLHttpRequest(),
+    			sendToServer: function(event)
+    			{
+    				
+    			}
+    	}
+    </script>
     </head>
 
     <body>
@@ -80,10 +91,7 @@
 				                    <label for="last-name">Last Name:</label><br>
 				                    <input type="text" name="last-name" class="last-name form-control" id="last-name">
 				                </div>
-				                <div class="form-group">
-				                    <label for="username">Username:</label><br>
-				                    <input type="text" name="username" class="height form-control" id="username">
-				                </div>
+				               
 				               
 	            				<br>
 	            				<button type="button" class="btn btn-next">Next <i class="fa fa-angle-right"></i></button>
@@ -198,7 +206,7 @@
 
 				                <br>
 	            				<button type="button" class="btn btn-previous"><i class="fa fa-angle-left"></i> Previous</button>
-	            				<button type="submit" class="btn">Submit</button>
+	            				<button type="submit" class="btn" onclick="">Submit</button>
 	            			</fieldset>
 
 	            			
