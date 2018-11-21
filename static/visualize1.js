@@ -34,6 +34,7 @@ $(document).ready(function() {
 		.done(function(data) {
 
 			$("#res").text(data);
+			//change code here to render pie chart
 
 		});
 
