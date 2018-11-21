@@ -1,4 +1,4 @@
-from flask import Flask,render_template,request,session,redirect, url_for
+from flask import Flask,render_template,request,session,redirect, url_for,jsonify
 import pymongo
 from pymongo import MongoClient
 import os
@@ -42,7 +42,13 @@ def login():
 
 @app.route('/elective',methods=['GET','POST'])
 def elective():
-	return render_template('elecFormProgressive.html')	
+	return render_template('elecFormProgressive.html')
+	
+@app.route('/visualisation',methods=['GET','POST'])
+def visualisation():	
+	fname = request.form['fname']
+	lname = request.form['lname']
+	return jsonify({'First Name': fname,'Last Name' : lname})
 	
 
 if __name__ == '__main__':
