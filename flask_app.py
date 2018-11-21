@@ -6,7 +6,7 @@ import socket
 
 
 # Read username & password from cred file to get acces to database (Replace with your file)
-filename='/home/ashik/cred.txt'
+filename='/Users/ankit/Desktop/Sem 7/Web Tech 2/WT2 Project/ElectivesRec/cred.txt'
 temp=open(filename,'r').read().split('\n')
 
 # Connecting to mongodb databse hosted at mlab
