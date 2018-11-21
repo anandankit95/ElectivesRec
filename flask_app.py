@@ -6,8 +6,8 @@ import socket
 
 
 # Read username & password from cred file to get acces to database (Replace with your file)
-filename='/home/ashik/cred.txt'
-temp=open(filename,'r').read().split('\n')
+#filename='/home/ashik/cred.txt'
+#temp=open(filename,'r').read().split('\n')
 
 # Connecting to mongodb databse hosted at mlab
 DB_NAME="erecdb"  
@@ -53,15 +53,14 @@ def login():
 @app.route('/elective',methods=['GET','POST'])
 def elective():
 	return render_template('elecFormProgressive.html')
-<<<<<<< HEAD
+
 	
 @app.route('/visualisation',methods=['GET','POST'])
 def visualisation():	
 	fname = request.form['fname']
 	lname = request.form['lname']
 	return jsonify({'First Name': fname,'Last Name' : lname})
-=======
->>>>>>> 1e26c4e34ec4560a26375b0bb549426d337bb1ea
+
 	
 
 if __name__ == '__main__':
