@@ -5,41 +5,51 @@ import os
 import socket
 
 
-# Get username & password to get acces to database (Replace with your file)
-#filename='/home/ashik/cred.txt'
-#temp=open(filename,'r').read().split('\n')
+# Read username & password from cred file to get acces to database (Replace with your file)
+filename='/home/ashik/cred.txt'
+temp=open(filename,'r').read().split('\n')
 
-#define flask app
+# Connecting to mongodb databse hosted at mlab
+DB_NAME="erecdb"  
+DB_HOST="ds043047.mlab.com"
+DB_PORT=43047
+DB_USER=temp[0] 
+DB_PASS=temp[1]
+
+connection = MongoClient(DB_HOST, DB_PORT)
+db = connection[DB_NAME]
+db.authenticate(DB_USER, DB_PASS)
+
+# define flask app
 app=Flask(__name__)
-#client=MongoClient("mongodb://"+temp[0]+":"+temp[1]+"@localhost:27017/ERecDB")
-client=MongoClient("mongodb://localhost:27017")
-db=client["ERecDB"]
-
-
 
 @app.route('/index')
 def index():
     return render_template('index.html')
 
+# User registration page
 @app.route('/')
 def register():
 	return render_template('register.html')
 	
+# User login page 	
 @app.route('/login',methods=['GET','POST'])
 def login():
 	error = None
 	if request.method == 'POST':
 		auc=db["authentication"]
-		user=auc.find_one({"username":request.form['username']})
+		user=auc.find_one({"uname":request.form['username']})
 		if(user!=None) :
 			if(request.form['password']==user["passwd"]):
-				return(redirect(url_for('electiveForm')))
+				return(redirect(url_for('elective')))
 			else:
 				error = "Invalid password"
 		else:
 			error = "Invalid username"					
 	return(render_template('login.html',error=error))
 
+
+# Elective form input page
 @app.route('/elective',methods=['GET','POST'])
 def elective():
 	return render_template('elecFormProgressive.html')
