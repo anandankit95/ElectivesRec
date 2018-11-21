@@ -30,14 +30,11 @@
         <link rel="apple-touch-icon-precomposed" sizes="72x72" 	href="{{url_for('static',filename='assets/ico/apple-touch-icon-72-precomposed.png')}}">
         <link rel="apple-touch-icon-precomposed" href="{{url_for('static',filename='assets/ico/apple-touch-icon-57-precomposed.png')}}">
 
-
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-		<script src="{{ url_for('static', filename='visualize.js') }}"></script>
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script src="{{ url_for('static', filename='visualize.js') }}"></script>
     </head>
 
     <body>
-		
 		
 		<!-- Top menu -->
 		
@@ -67,14 +64,13 @@
 	        	<div class="row">
 	                <div class="col-sm-12 msf-title">
 	                    <h3>Fill In The Form</h3>
-	                    
 	                    <p>Please complete the form below to get instant access to our elective recommendations:</p>
 	                </div>
 	            </div>
 	            <div class="row">
 	                <div class="col-sm-12 msf-form">
 	                    
-	                    <form role="form" method="post" class="form-inline" name="regn" action="">
+	                    <form role="form" action="" method="post" class="form-inline">
 	                    	
 	                    	<fieldset>
 	            				<h4>Introduction <span class="step">(Step 1 / 5)</span></h4>
@@ -97,7 +93,6 @@
 	            				<div class="form-group">
 				                    <label for="subject1">Subject 1: C Programming</label><br>
 				                    <input type="text" name="C" class="birth-city form-control" id="sem1_subject1">
-		
 				                </div>
 				                <div class="form-group">
 				                    <label for="subject2">Subject 2: C Laboratory</label><br>
@@ -164,7 +159,7 @@
 				                    <input type="text" name="IDS" class="birth-city form-control" id="sem3_subject3">
 				                </div>
 				                <div class="form-group">
-				                    <label for="subject4">Subject 4: Microprocessor</label><br> 
+				                    <label for="subject4">Subject 4: Microprocessor</label><br>
 				                    <input type="text" name="MPCA" class="birth-city form-control" id="sem3_subject4">
 				                </div>
 				                <div class="form-group">
@@ -202,18 +197,17 @@
 
 				                <br>
 	            				<button type="button" class="btn btn-previous"><i class="fa fa-angle-left"></i> Previous</button>
-
-
 	            				<button type="submit" class="btn" id="SubmitIt">Submit</button>
-
 	            			</fieldset>
+
+	            			
 	                    </form>
 	                    
 	                </div>
 	            </div>
 			</div>
 		</div>
-		
+		<div id="AjaxDiv"></div>
 		
 		
 
