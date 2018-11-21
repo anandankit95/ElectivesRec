@@ -29,19 +29,11 @@ $(document).ready(function() {
 				
 			},
 			type : 'POST',
-			url : '/visualisation'
+			url : '/elective'
 		})
 		.done(function(data) {
 
-			if (data.error) {
-				//code to display error (data.error)
-				
-			}
-			else {
-				//pass data to the charts api here and display the charts
-				
-			}
-			
+			$("#res").text(data);
 
 		});
 

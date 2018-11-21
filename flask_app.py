@@ -3,11 +3,18 @@ import pymongo
 from pymongo import MongoClient
 import os
 import socket
-
+from flask import jsonify
+import json
+import numpy as np 
+import pandas as pd
+from sklearn.linear_model import LogisticRegression
+from sklearn import preprocessing
+from sklearn.model_selection import cross_val_score
+from sklearn.metrics import accuracy_score
 
 # Read username & password from cred file to get acces to database (Replace with your file)
-#filename='/home/ashik/cred.txt'
-#temp=open(filename,'r').read().split('\n')
+filename='/home/ashik/cred.txt'
+temp=open(filename,'r').read().split('\n')
 
 # Connecting to mongodb databse hosted at mlab
 DB_NAME="erecdb"  
@@ -49,19 +56,40 @@ def login():
 	return(render_template('login.html',error=error))
 
 
+
+def predict(X,Y,vals):
+	le = preprocessing.LabelEncoder()
+	le.fit(["DA","ADBMS","ADA","CG","HPCA","WTS"])
+	Y=le.transform(Y) 
+	clf = LogisticRegression(random_state=0, solver='lbfgs',multi_class='multinomial').fit(X,Y)
+	Y_pred=clf.predict_proba([vals])[0]
+	d={}
+	ls=le.inverse_transform(range(6))
+	for i in range(6):
+		d[ls[i]]=Y_pred[i]	
+	return(d)
+
+
+
 # Elective form input page
 @app.route('/elective',methods=['GET','POST'])
 def elective():
+	if(request.method == 'POST'):
+		result = request.form
+		arr=sorted([i for i in result]) 
+		arr.remove('fname')
+		arr.remove('lname')
+		vals=[int(result[i]) for i in arr]
+		acad=db["academics"]
+		data=pd.DataFrame(list(acad.find()))
+		Y=data[['Elective']].values
+		df=data.drop('Elective',1)
+		df=df.drop('_id',1)
+		X=df.values
+		predictions=predict(X,Y,vals)
+		print(predictions)
+		json.dumps(predictions)	   	
 	return render_template('elecFormProgressive.html')
-
-	
-@app.route('/visualisation',methods=['GET','POST'])
-def visualisation():	
-	fname = request.form['fname']
-	lname = request.form['lname']
-	return jsonify({'First Name': fname,'Last Name' : lname})
-
-	
 
 if __name__ == '__main__':
 	app.config['DEBUG'] = True #helps you to see changes without re-running app
