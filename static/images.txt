@@ -1,0 +1,1 @@
+<img src="../static/assets/img/Electives1.jpg" alt="Electives images" id="elecimg1" class="elecimg1" style="width:250px;height:250px;float:left">|<img src="../static/assets/img/Electives2.jpg" alt="Electives images" id="elecimg1" class="elecimg2" style="width:250px;height:250px;float:right">

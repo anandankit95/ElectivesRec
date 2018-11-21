@@ -30,13 +30,65 @@
         <link rel="apple-touch-icon-precomposed" sizes="72x72" 	href="{{url_for('static',filename='assets/ico/apple-touch-icon-72-precomposed.png')}}">
         <link rel="apple-touch-icon-precomposed" href="{{url_for('static',filename='assets/ico/apple-touch-icon-57-precomposed.png')}}">
 
+<<<<<<< HEAD
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 <script src="https://code.highcharts.com/highcharts.js"></script>
+||||||| merged common ancestors
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+=======
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+		<script src="{{ url_for('static', filename='visualize1.js') }}"></script>
+>>>>>>> 7255fff3a53d5bc63fcecff4397867c5097ae323
 
-<script src="{{ url_for('static', filename='visualize1.js') }}"></script>
+		<script type="text/javascript">
+			var xhr=new XMLHttpRequest();
+			function init()
+			{
+				xhr.onreadystatechange=showContent;
+				xhr.open("GET","../static/images.txt",true);
+				xhr.send();
+			}	
+
+			function showContent()
+			{
+				if(xhr.readyState==4 && xhr.status==200)
+				{
+					console.log("text received");
+					d = document.getElementById('descriptionDiv');
+					desc = document.createElement('h2');
+					desc.innerHTML = 'Elective Recommendation';
+					d.appendChild(desc);
+					xhr.abort();
+					setTimeout(getPic,2000);
+				}
+			}	
+			function getPic()
+			{
+				xhr.onreadystatechange=showPic;
+				xhr.open("GET","../static/images.txt",true);
+				xhr.send();
+			}
+			function showPic()
+			{
+				if(xhr.readyState==4 && xhr.status==200)
+				{
+						var res=xhr.responseText;
+						var resArr=res.split("|");
+						console.log(resArr[0]);
+						console.log(resArr[1]);
+						document.getElementById("imgdiv1").innerHTML=resArr[0];
+						document.getElementById("imgdiv2").innerHTML=resArr[1];
+						xhr.abort();
+						
+						
+				}
+			}	
+
+		</script>
     </head>
 
-    <body>
+    <body onload="init()">
+		
 		
 		<!-- Top menu -->
 		
@@ -45,8 +97,15 @@
 		<div class="description-container">
 	        <div class="container">
 	        	<div class="row">
-	                <div class="col-sm-12 description-title">
-	                    <h2>Elective Recommendation</h2>
+	                <div class="col-sm-12 description-title" id="descriptionDiv">
+	                	<div class="imgdiv1" id="imgdiv1">
+	                		
+	                	</div>
+	                	
+	                    <h2 style="text-align: center;">Welcome To The</h2>
+	                    <div class="imgdiv2" id="imgdiv2">
+	                    	
+	                	</div>
 	                </div>
 	            </div>
 	            <div class="row">
@@ -66,13 +125,14 @@
 	        	<div class="row">
 	                <div class="col-sm-12 msf-title">
 	                    <h3>Fill In The Form</h3>
+	                    
 	                    <p>Please complete the form below to get instant access to our elective recommendations:</p>
 	                </div>
 	            </div>
 	            <div class="row">
 	                <div class="col-sm-12 msf-form">
 	                    
-	                    <form role="form" action="" method="post" class="form-inline">
+	                    <form role="form" method="post" class="form-inline" name="regn" action="">
 	                    	
 	                    	<fieldset>
 	            				<h4>Introduction <span class="step">(Step 1 / 5)</span></h4>
@@ -95,6 +155,7 @@
 	            				<div class="form-group">
 				                    <label for="subject1">Subject 1: C Programming</label><br>
 				                    <input type="text" name="C" class="birth-city form-control" id="sem1_subject1">
+		
 				                </div>
 				                <div class="form-group">
 				                    <label for="subject2">Subject 2: C Laboratory</label><br>
@@ -161,7 +222,7 @@
 				                    <input type="text" name="IDS" class="birth-city form-control" id="sem3_subject3">
 				                </div>
 				                <div class="form-group">
-				                    <label for="subject4">Subject 4: Microprocessor</label><br>
+				                    <label for="subject4">Subject 4: Microprocessor</label><br> 
 				                    <input type="text" name="MPCA" class="birth-city form-control" id="sem3_subject4">
 				                </div>
 				                <div class="form-group">
@@ -199,10 +260,12 @@
 
 				                <br>
 	            				<button type="button" class="btn btn-previous"><i class="fa fa-angle-left"></i> Previous</button>
-	            				<button type="submit" class="btn" id="SubmitIt" value="submit">Submit</button>
-	            			</fieldset>
 
-	            			
+	            				<button type="submit" class="btn" id="SubmitIt" value="submit">Submit</button>
+
+
+
+	            			</fieldset>
 	                    </form>
 	                    <span id=res>?</span>
 	                </div>
@@ -210,9 +273,6 @@
 			</div>
 			<div id="container" style="width:100%; height:400px;"></div>
 		</div>
-		
-		
-		
 
         <!-- Javascript -->
         <script src="{{url_for('static',filename='assets/js/jquery-1.11.1.min.js')}}"></script>

@@ -13,8 +13,18 @@ from sklearn.model_selection import cross_val_score
 from sklearn.metrics import accuracy_score
 
 # Read username & password from cred file to get acces to database (Replace with your file)
-filename='/home/ashik/cred.txt'
+
+
+filename='/Users/ankit/Desktop/Sem 7/Web Tech 2/WT2 Project/ElectivesRec/cred.txt'
 temp=open(filename,'r').read().split('\n')
+
+#filename='/home/ashik/cred.txt'
+#temp=open(filename,'r').read().split('\n')
+
+#filename='/home/ashik/cred.txt'
+#temp=open(filename,'r').read().split('\n')
+
+
 
 # Connecting to mongodb databse hosted at mlab
 DB_NAME="erecdb"  

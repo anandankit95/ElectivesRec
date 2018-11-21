@@ -1,4 +1,3 @@
-
 function scroll_to_class(chosen_class) {
 	var nav_height = $('nav').outerHeight();
 	var scroll_to = $(chosen_class).offset().top - nav_height;
@@ -14,7 +13,7 @@ jQuery(document).ready(function() {
 	/*
 	    Fullscreen background
 	*/
-	$.backstretch("assets/img/backgrounds/1.jpg");
+	//$.backstretch("../img/backgrounds/1.jpg");
 
 	/*
 	    Multi Step Form

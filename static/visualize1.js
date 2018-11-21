@@ -34,6 +34,7 @@ $(document).ready(function() {
 		.done(function(data) {
 
 			$("#res").text(data);
+<<<<<<< HEAD
 			var parsed = JSON.parse(data);
 			$(function () {
 					$('#container').highcharts({
@@ -80,6 +81,7 @@ $(document).ready(function() {
 							    y: 2.61
 							}]
 						    }]
+
 
 });
 });
