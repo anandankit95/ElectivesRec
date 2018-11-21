@@ -6,6 +6,8 @@ body {
     font-weight: 400;
     color: #fff;
     line-height: 24px;
+    background-image: url(../img/backgrounds/background2.jpg);
+   	background-image-opacity: 0.2; 
 }
 
 strong { font-weight: 700; }
@@ -71,6 +73,22 @@ ul.navbar-nav {
 
 
 /***** Description *****/
+
+.imgdiv1
+{
+	padding-top: 40px;
+	padding-bottom: 40px;
+	text-align: left;
+	
+}
+
+.imgdiv2
+{
+	padding-top: 40px;
+	padding-bottom: 40px;
+	text-align: right;
+
+}
 
 .description-container {
 	padding-top: 40px;
