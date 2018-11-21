@@ -5,9 +5,11 @@ import os
 import socket
 
 
-# Get username & password to get acces to database (Replace with your file)
+# Read username & password from cred file to get acces to database (Replace with your file)
 filename='/home/ashik/cred.txt'
 temp=open(filename,'r').read().split('\n')
+
+# Connecting to mongodb databse hosted at mlab
 DB_NAME="erecdb"  
 DB_HOST="ds043047.mlab.com"
 DB_PORT=43047
@@ -18,17 +20,19 @@ connection = MongoClient(DB_HOST, DB_PORT)
 db = connection[DB_NAME]
 db.authenticate(DB_USER, DB_PASS)
 
-#define flask app
+# define flask app
 app=Flask(__name__)
 
 @app.route('/index')
 def index():
     return render_template('index.html')
 
+# User registration page
 @app.route('/')
 def register():
 	return render_template('register.html')
 	
+# User login page 	
 @app.route('/login',methods=['GET','POST'])
 def login():
 	error = None
@@ -44,6 +48,8 @@ def login():
 			error = "Invalid username"					
 	return(render_template('login.html',error=error))
 
+
+# Elective form input page
 @app.route('/elective',methods=['GET','POST'])
 def elective():
 	return render_template('elecFormProgressive.html')	
