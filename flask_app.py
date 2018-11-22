@@ -90,19 +90,19 @@ def elective():
 	if(request.method == 'POST'):
 		result = request.form
 		#print(result)
-		#arr=sorted([i for i in result]) 
-		#arr.remove('fname')
-		#arr.remove('lname')
-		#vals=[int(result[i]) for i in arr]
-		#acad=db["academics"]
-		#data=pd.DataFrame(list(acad.find()))
-		#Y=data[['Elective']].values
-		#df=data.drop('Elective',1)
-		#df=df.drop('_id',1)
-		#X=df.values
-		#predictions=predict(X,Y,vals)
-		#print(predictions)
-		return jsonify({"DA":20,"ADBMS":25,"WTS":5,"HPCA":30,"ADA":10,"CG":10})
+		arr=sorted([i for i in result]) 
+		arr.remove('fname')
+		arr.remove('lname')
+		vals=[int(result[i]) for i in arr]
+		acad=db["academics"]
+		data=pd.DataFrame(list(acad.find()))
+		Y=data[['Elective']].values
+		df=data.drop('Elective',1)
+		df=df.drop('_id',1)
+		X=df.values
+		predictions=predict(X,Y,vals)
+		print(predictions)
+		return jsonify({"DA":predictions["DA"],"ADBMS":predictions["ADBMS"],"WTS":predictions["WTS"],"HPCA":predictions["HPCA"],"ADA":predictions["ADA"],"CG":predictions["CG"]})
 		
 	   	
 	return render_template('elecFormProgressive.html',)

@@ -45,17 +45,25 @@
 				xhr.onreadystatechange=showContent;
 				xhr.open("GET","../static/images.txt",true);
 				xhr.send();
-			}	
+			}
+				
 
 			function showContent()
 			{
 				if(xhr.readyState==4 && xhr.status==200)
 				{
+					var res=xhr.responseText;
+					var resArr=res.split("|");
+					//console.log(resArr[2]);
+					//console.log(resArr[3]);
+					//document.getElementById("imgdiv1").innerHTML=resArr[2];
+					//document.getElementById("imgdiv2").innerHTML=resArr[3];
 					console.log("text received");
 					d = document.getElementById('descriptionDiv');
 					desc = document.createElement('h2');
 					desc.innerHTML = 'Elective Recommendation';
 					d.appendChild(desc);
+
 					xhr.abort();
 					setTimeout(getPic,2000);
 				}
@@ -261,15 +269,18 @@
 
 	            				<button type="submit" class="btn" id="SubmitIt" value="submit">Submit</button>
 
-
-
-	            			</fieldset>
+							</fieldset>
 	                    </form>
-	                    <span id=res>?</span>
+	                    <div class="row">
+			                <div class="col-sm-12 msf-title">
+			                    <h3 id=res></h3>
+			                </div>
+	           			</div>
+	                    
 	                </div>
 	            </div>
 			</div>
-			<div id="container" style="width:100%; height:400px;"></div>
+			<div id="container" class="diagramDiv"></div>
 		</div>
 
         <!-- Javascript -->

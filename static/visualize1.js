@@ -33,7 +33,7 @@ $(document).ready(function() {
 		})
 		.done(function(data) {
 
-			//$("#res").text(data);
+			$("#res").html("Have A Look at the Recommendation");
 			//change code here to render pie chart
 			console.log(data)
 			//$("#res").append(data);
@@ -91,8 +91,8 @@ $(document).ready(function() {
 							}]
 						    }]
 						    
-});
-});
+			});
+		});
 
 		});
 
