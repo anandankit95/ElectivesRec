@@ -84,22 +84,32 @@ def predict(X,Y,vals):
 # Elective form input page
 @app.route('/elective',methods=['GET','POST'])
 def elective():
+	#if(request.method == 'GET'):
+		#return render_template('elecFormProgressive.html')
+
 	if(request.method == 'POST'):
 		result = request.form
-		arr=sorted([i for i in result]) 
-		arr.remove('fname')
-		arr.remove('lname')
-		vals=[int(result[i]) for i in arr]
-		acad=db["academics"]
-		data=pd.DataFrame(list(acad.find()))
-		Y=data[['Elective']].values
-		df=data.drop('Elective',1)
-		df=df.drop('_id',1)
-		X=df.values
-		predictions=predict(X,Y,vals)
-		print(predictions)
-		json.dumps(predictions)	   	
-	return render_template('elecFormProgressive.html')
+		#print(result)
+		#arr=sorted([i for i in result]) 
+		#arr.remove('fname')
+		#arr.remove('lname')
+		#vals=[int(result[i]) for i in arr]
+		#acad=db["academics"]
+		#data=pd.DataFrame(list(acad.find()))
+		#Y=data[['Elective']].values
+		#df=data.drop('Elective',1)
+		#df=df.drop('_id',1)
+		#X=df.values
+		#predictions=predict(X,Y,vals)
+		#print(predictions)
+		return jsonify({"DA":20,"ADBMS":25,"WTS":5,"HPCA":30,"ADA":10,"CG":10})
+		
+	   	
+	return render_template('elecFormProgressive.html',)
+
+
+
+
 
 if __name__ == '__main__':
 	app.config['DEBUG'] = True #helps you to see changes without re-running app

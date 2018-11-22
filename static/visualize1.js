@@ -33,13 +33,16 @@ $(document).ready(function() {
 		})
 		.done(function(data) {
 
-			$("#res").text(data);
-
-			var parsed = JSON.parse(data);
+			//$("#res").text(data);
+			//change code here to render pie chart
+			console.log(data)
+			//$("#res").append(data);
+			var resp = data;
 			$(function () {
-					$('#container').highcharts({
-					chart: {	
-						    	renderTo : 'container',
+		//$('#container').highcharts({
+			var myChart = Highcharts.chart('container', {
+							chart: {	
+						    renderTo : 'container',
 							plotBackgroundColor: null,
 							plotBorderWidth: null,
 							plotShadow: false,
@@ -68,23 +71,31 @@ $(document).ready(function() {
 							name: 'Brands',
 							colorByPoint: true,
 							data: [{
-							    name: "subject1",
-							    y: 61.41
+							    name: "DA",
+							    y: resp["DA"]
 							}, {
-							    name: 'subject2',
-							    y: 11.84
+							    name: 'ADBMS',
+							    y: resp["ADBMS"]
 							}, {
-							    name: 'subject3',
-							    y: 10.85
+							    name: 'HPCA',
+							    y: resp['HPCA']
+							},{
+							    name: 'ADA',
+							    y: resp["ADA"]
+							},{
+							    name: 'CG',
+							    y: resp["CG"]
 							}, {
-							    name: 'subject4',
-							    y: 2.61
+							    name: 'WTS',
+							    y: resp['WTS']
 							}]
 						    }]
-
-
+						    
 });
 });
+
+		});
+
 		event.preventDefault();
 
 	});
