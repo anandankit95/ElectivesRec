@@ -14,10 +14,6 @@ from sklearn.metrics import accuracy_score
 
 # Read username & password from cred file to get acces to database (Replace with your file)
 
-
-#filename='/Users/ankit/Desktop/Sem 7/Web Tech 2/WT2 Project/ElectivesRec/cred.txt'
-#temp=open(filename,'r').read().split('\n')
-
 filename='/home/ashik/cred.txt'
 temp=open(filename,'r').read().split('\n')
 
@@ -57,7 +53,7 @@ def register():
 			post={"uname":u_name,"email":email,"usn":usn,"passwd":pwd}
 			print(post)
 			auc.insert_one(post)
-			return render_template('login.html')
+			return(redirect(url_for('elective')))
 		else:
 			error = "Existing user"	
 	return render_template('register.html')
@@ -81,15 +77,12 @@ def login():
 
 
 def predict(X,Y,vals):
-	le = preprocessing.LabelEncoder()
-	le.fit(["DA","ADBMS","ADA","CG","HPCA","WTS"])
-	Y=le.transform(Y) 
+	electives=["DA","ADBMS","ADA","CG","HPCA","WTS"]
+	Y=[electives.index(i)+1 for i in Y]
 	clf = LogisticRegression(random_state=0, solver='lbfgs',multi_class='multinomial').fit(X,Y)
-	Y_pred=clf.predict_proba([vals])[0]
-	d={}
-	ls=le.inverse_transform(range(6))
-	for i in range(6):
-		d[ls[i]]=Y_pred[i]	
+	Y_pred=clf.predict_proba([vals])
+	Y_pred=[i*100 for i in Y_pred[0]]
+	d=dict(zip(electives,Y_pred))
 	return(d)
 
 
@@ -102,13 +95,13 @@ def elective():
 
 	if(request.method == 'POST'):
 		result = request.form
-		#print(result)
 		arr=sorted([i for i in result]) 
 		arr.remove('fname')
 		arr.remove('lname')
 		vals=[int(result[i]) for i in arr]
 		acad=db["academics"]
 		data=pd.DataFrame(list(acad.find()))
+		print(data)
 		Y=data[['Elective']].values
 		df=data.drop('Elective',1)
 		df=df.drop('_id',1)
