@@ -16,7 +16,7 @@ Host mongodb in mLab.(Move the local collections to the database in mLab)
 
 We are using a Logistic regression classifier to get probabilities for each elective and then render a pie chart using HighCharts.
 
-![predictions](/ElectivesRec/piechart.png)
+![predictions](piechart.png)
 
 
   
