@@ -104,7 +104,7 @@ input::-webkit-input-placeholder {
 							<div class="cols-sm-10">
 								<div class="input-group">
 									<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-									<input type="text" class="form-control" name="name" id="name"  placeholder="Enter your Name"/>
+									<input type="text" class="form-control" name="uname" id="name"  placeholder="Create Username" value="{{request.form.uname}}"/>
 								</div>
 							</div>
 						</div>
@@ -114,7 +114,7 @@ input::-webkit-input-placeholder {
 							<div class="cols-sm-10">
 								<div class="input-group">
 									<span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
-									<input type="text" class="form-control" name="email" id="email"  placeholder="Enter your Email"/>
+									<input type="text" class="form-control" name="email" id="email"  placeholder="Enter your Email" value="{{request.form.email}}"/>
 								</div>
 							</div>
 						</div>
@@ -124,7 +124,7 @@ input::-webkit-input-placeholder {
 							<div class="cols-sm-10">
 								<div class="input-group">
 									<span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
-									<input type="text" class="form-control" name="USN" id="USN"  placeholder="Enter your USN"/>
+									<input type="text" class="form-control" name="USN" id="USN"  placeholder="Enter your USN" value="{{request.form.USN}}"/>
 								</div>
 							</div>
 						</div>
@@ -134,28 +134,24 @@ input::-webkit-input-placeholder {
 							<div class="cols-sm-10">
 								<div class="input-group">
 									<span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-									<input type="password" class="form-control" name="password" id="password"  placeholder="Enter your Password"/>
+									<input type="password" class="form-control" name="password" id="password"  placeholder="Enter your Password" value="{{request.form.password}}" />
 								</div>
 							</div>
 						</div>
+
 
 						<div class="form-group">
-							<label for="confirm" class="cols-sm-2 control-label">Confirm Password</label>
-							<div class="cols-sm-10">
-								<div class="input-group">
-									<span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-									<input type="password" class="form-control" name="confirm" id="confirm"  placeholder="Confirm your Password"/>
-								</div>
-							</div>
+							
+							<input class="btn btn-primary btn-lg btn-block login-button"type="submit" value="Register"/>
 						</div>
-
-						<div class="form-group ">
-							<button type="button" class="btn btn-primary btn-lg btn-block login-button">Register</button>
-						</div>
+			
 						<div class="login-register">
-				            <a href="{{ url_for('login') }}">Login</a>
+				            <a href="{{ url_for('login') }}">Already Registered:Login</a>
 				         </div>
 					</form>
+					{% if error %}
+					<p class="error"><strong>Error:</strong> {{ error }}
+				{% endif %}
 				</div>
 			</div>
 		</div>

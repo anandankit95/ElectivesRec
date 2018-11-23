@@ -15,15 +15,11 @@ from sklearn.metrics import accuracy_score
 # Read username & password from cred file to get acces to database (Replace with your file)
 
 
-filename='/Users/ankit/Desktop/Sem 7/Web Tech 2/WT2 Project/ElectivesRec/cred.txt'
+#filename='/Users/ankit/Desktop/Sem 7/Web Tech 2/WT2 Project/ElectivesRec/cred.txt'
+#temp=open(filename,'r').read().split('\n')
+
+filename='/home/ashik/cred.txt'
 temp=open(filename,'r').read().split('\n')
-
-#filename='/home/ashik/cred.txt'
-#temp=open(filename,'r').read().split('\n')
-
-#filename='/home/ashik/cred.txt'
-#temp=open(filename,'r').read().split('\n')
-
 
 
 # Connecting to mongodb databse hosted at mlab
@@ -45,8 +41,25 @@ def index():
     return render_template('index.html')
 
 # User registration page
-@app.route('/')
+@app.route('/',methods=['GET','POST'])
 def register():
+	error = None
+	if request.method == 'POST':
+		print("Hello")
+		auc=db["credentials"]
+		u_name=request.form['uname']
+		email=request.form['email']
+		usn=request.form['USN']
+		pwd=request.form['password']
+		flag1=auc.find_one({"uname":u_name})
+		flag2=auc.find_one({"usn":usn})
+		if(not(flag1) and not(flag2)):
+			post={"uname":u_name,"email":email,"usn":usn,"passwd":pwd}
+			print(post)
+			auc.insert_one(post)
+			return render_template('login.html')
+		else:
+			error = "Existing user"	
 	return render_template('register.html')
 	
 # User login page 	
@@ -54,7 +67,7 @@ def register():
 def login():
 	error = None
 	if request.method == 'POST':
-		auc=db["authentication"]
+		auc=db["credentials"]
 		user=auc.find_one({"uname":request.form['username']})
 		if(user!=None) :
 			if(request.form['password']==user["passwd"]):
